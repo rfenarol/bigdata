@@ -1,4 +1,4 @@
-package FM.hadoop.mapreduce.progetto1;
+package it.bigdata.hadoop.esercizio1;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

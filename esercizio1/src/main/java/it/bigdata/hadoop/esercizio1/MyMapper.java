@@ -1,4 +1,4 @@
-package FM.hadoop.mapreduce.progetto1;
+package it.bigdata.hadoop.esercizio1;
 
 import java.io.IOException;
 import java.util.StringTokenizer;

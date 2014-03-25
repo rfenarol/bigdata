@@ -1,4 +1,4 @@
-package FM.hadoop.mapreduce.progetto1;
+package it.bigdata.hadoop.esercizio1;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Reducer;
