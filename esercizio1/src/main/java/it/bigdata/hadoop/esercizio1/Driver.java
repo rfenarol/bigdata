@@ -15,6 +15,8 @@ public class Driver {
 		// Set the Jar by finding where a given class came from
 		job.setJarByClass(Driver.class);
 		
+		System.out.println("FENAROLi");
+		
 		job.setMapperClass(MyMapper.class);	//Set the Mapper for the job.
 		job.setReducerClass(MyReducer.class);	//Set the Reducer for the job.
 		
