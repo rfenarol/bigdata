@@ -16,7 +16,7 @@ public class Main {
 		 * interessi da cui pescare
 		 * 
 		 * tali file sono in due cartelle: syllable e interest
-		 * il file hobby pu˜ tranquillamente essere editato aggiungendo nuovi
+		 * il file hobby puï¿½ tranquillamente essere editato aggiungendo nuovi
 		 * iteressi (uno per riga)
 		 */
 		ItemGenerator IG = new ItemGenerator("syllable/elven","interest/hobby");
@@ -27,7 +27,7 @@ public class Main {
 		 * - il numero massimo di sillabe contenute in un nome (nell'esempio 4)
 		 * - il numero massimo di interessi per nome (nell'esempio 5)
 		 */
-		IG.generate("data/esempio.txt", 10, 4, 5);
+		IG.generate("data/esempio.txt", 100000, 4, 5);
 
 	}
 
