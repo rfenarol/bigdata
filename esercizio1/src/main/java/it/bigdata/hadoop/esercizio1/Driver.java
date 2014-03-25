@@ -15,8 +15,6 @@ public class Driver {
 		// Set the Jar by finding where a given class came from
 		job.setJarByClass(Driver.class);
 		
-		System.out.println("FENAROLi");
-		
 		job.setMapperClass(MyMapper.class);	//Set the Mapper for the job.
 		job.setReducerClass(MyReducer.class);	//Set the Reducer for the job.
 		
@@ -30,8 +28,6 @@ public class Driver {
 		job.waitForCompletion(true);			//		Submit the job to the cluster and wait for it to finish.
 												//		Se il parametro è true, print the progress to the user
 		
-		System.out.println("conflitto!");
-
 	}
 	
 }
