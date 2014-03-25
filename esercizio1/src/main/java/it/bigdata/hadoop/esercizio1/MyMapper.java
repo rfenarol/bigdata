@@ -8,23 +8,28 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-
 public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 	private static final IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
-	public void map(LongWritable key, Text value, Context context)	throws IOException, InterruptedException {
+	public void map(LongWritable key, Text value, Context context)
+			throws IOException, InterruptedException {
+		StringTokenizer tokenizer;
+		String allText = value.toString();
+		String[] lines = allText.split("\n");
 
-		String line = value.toString();
-		StringTokenizer tokenizer = new StringTokenizer(line);
-		
-		if(tokenizer.hasMoreTokens()) 
-			word.set(tokenizer.nextToken());
-		
-		while (tokenizer.hasMoreTokens()) {
-			word.set(tokenizer.nextToken());
-			context.write(word, one);
+		for (int i = 0; i < lines.length; i++) {
+			tokenizer = new StringTokenizer(lines[i]);
+
+			/* leviamo il primo che è il nome utente */
+			if (tokenizer.hasMoreTokens())
+				tokenizer.nextToken();
+
+			while (tokenizer.hasMoreTokens()) {
+				word.set(tokenizer.nextToken());
+				context.write(word, one);
+			}
 		}
 
 	}
