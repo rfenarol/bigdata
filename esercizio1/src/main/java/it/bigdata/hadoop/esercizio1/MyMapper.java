@@ -16,21 +16,17 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
 		StringTokenizer tokenizer;
-		String /*allText*/ line = value.toString();
-//		String[] lines = allText.split("\n");
+		String line = value.toString();
+		tokenizer = new StringTokenizer(line);
 
-//		for (int i = 0; i < lines.length; i++) {
-			tokenizer = new StringTokenizer(/*lines[i]*/line);
+		/* leviamo il primo che è il nome utente */
+		if (tokenizer.hasMoreTokens())
+			tokenizer.nextToken();
 
-			/* leviamo il primo che è il nome utente */
-			if (tokenizer.hasMoreTokens())
-				tokenizer.nextToken();
-
-			while (tokenizer.hasMoreTokens()) {
-				word.set(tokenizer.nextToken());
-				context.write(word, one);
-			}
-//		}
+		while (tokenizer.hasMoreTokens()) {
+			word.set(tokenizer.nextToken());
+			context.write(word, one);
+		}
 	}
 
 }
