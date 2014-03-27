@@ -16,11 +16,11 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
 		StringTokenizer tokenizer;
-		String allText = value.toString();
-		String[] lines = allText.split("\n");
+		String /*allText*/ line = value.toString();
+//		String[] lines = allText.split("\n");
 
-		for (int i = 0; i < lines.length; i++) {
-			tokenizer = new StringTokenizer(lines[i]);
+//		for (int i = 0; i < lines.length; i++) {
+			tokenizer = new StringTokenizer(/*lines[i]*/line);
 
 			/* leviamo il primo che è il nome utente */
 			if (tokenizer.hasMoreTokens())
@@ -30,7 +30,7 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 				word.set(tokenizer.nextToken());
 				context.write(word, one);
 			}
-		}
+//		}
 	}
 
 }
