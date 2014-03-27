@@ -27,7 +27,7 @@ public class Main {
 		 * - il numero massimo di sillabe contenute in un nome (nell'esempio 4)
 		 * - il numero massimo di interessi per nome (nell'esempio 5)
 		 */
-		IG.generate("data/esempio.txt", 100000, 4, 5);
+		IG.generate("data/esempio.txt", 100000, 5, 10);
 
 	}
 
