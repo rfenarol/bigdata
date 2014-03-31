@@ -3,6 +3,7 @@ package it.bigdata.hadoop.esercizio1;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapred.lib.ChainReducer;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -34,13 +35,14 @@ public class Driver {
 										// for it to finish.
 										// Se il parametro Ã¨ true, print the
 										// progress to the user
-
+/* concatena un map task dopo la reduce */
+//		ChainReducer.addMapper(job, klass, inputKeyClass, inputValueClass, outputKeyClass, outputValueClass, byValue, mapperConf);
 		/*
-		 * Secondo me la soluzione per fare l'ordinamento è questa: 
+		 * Secondo me la soluzione per fare l'ordinamento ï¿½ questa: 
 		 * 1 Chaining MapReduce jobs in a sequence 
 		 * Though you can execute the two jobs
-		 * manually one after the other, it’s more convenient to automate the
-		 * execution sequence. You can chain MapReduce jobs to run sequen­
+		 * manually one after the other, itï¿½s more convenient to automate the
+		 * execution sequence. You can chain MapReduce jobs to run sequenï¿½
 		 * tially, with the output of one MapReduce job being the input to the
 		 * next. Chaining MapReduce jobs is analogous to Unix pipes .
 		 * mapreduce-1 | mapreduce-2 | mapreduce-3 | ...
@@ -48,7 +50,7 @@ public class Driver {
 		 * Chaining MapReduce jobs sequentially is quite straightforward. Recall
 		 * that a driver sets up a JobConf object with the configuration
 		 * parameters for a MapReduce job and passes the JobConf object to
-		 * JobClient.runJob() to start the job. As Job­ Client.runJob() blocks
+		 * JobClient.runJob() to start the job. As Jobï¿½ Client.runJob() blocks
 		 * until the end of a job, chaining MapReduce jobs involves calling the
 		 * driver of one MapReduce job after another. The driver at each job
 		 * will have to create a new JobConf object and set its input path to be
