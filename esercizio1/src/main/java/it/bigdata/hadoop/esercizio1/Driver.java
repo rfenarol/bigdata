@@ -4,7 +4,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Job;
-//import org.apache.hadoop.mapreduce.lib.chain.ChainReducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
@@ -35,14 +34,13 @@ public class Driver {
 										// for it to finish.
 										// Se il parametro Ã¨ true, print the
 										// progress to the user
-	
 
 		/*
-		 * Secondo me la soluzione per fare l'ordinamento ï¿½ questa: 
+		 * Secondo me la soluzione per fare l'ordinamento è questa: 
 		 * 1 Chaining MapReduce jobs in a sequence 
 		 * Though you can execute the two jobs
-		 * manually one after the other, itï¿½s more convenient to automate the
-		 * execution sequence. You can chain MapReduce jobs to run sequenï¿½
+		 * manually one after the other, it’s more convenient to automate the
+		 * execution sequence. You can chain MapReduce jobs to run sequen­
 		 * tially, with the output of one MapReduce job being the input to the
 		 * next. Chaining MapReduce jobs is analogous to Unix pipes .
 		 * mapreduce-1 | mapreduce-2 | mapreduce-3 | ...
@@ -50,7 +48,7 @@ public class Driver {
 		 * Chaining MapReduce jobs sequentially is quite straightforward. Recall
 		 * that a driver sets up a JobConf object with the configuration
 		 * parameters for a MapReduce job and passes the JobConf object to
-		 * JobClient.runJob() to start the job. As Jobï¿½ Client.runJob() blocks
+		 * JobClient.runJob() to start the job. As Job­ Client.runJob() blocks
 		 * until the end of a job, chaining MapReduce jobs involves calling the
 		 * driver of one MapReduce job after another. The driver at each job
 		 * will have to create a new JobConf object and set its input path to be
@@ -58,36 +56,7 @@ public class Driver {
 		 * data generated at each step of the chain at the end.
 		 */
 
-		/** chainmapper e chainreducer da qui in poi Ã¨ un tentativo **/
-//		ChainReducer usage pattern: possiamo avere solo sequenze del tipo
-//		map+ | reduce | map* 
-//		che vuol dire un map per finire il ciclo?
-//		(come fare ad avere map|reduce|map|reduce? )
-//		Configuration chainConf = new Configuration(); 
-//        Job chainJob = Job.getInstance(chainConf, "prova chain");
-//		
-//		Configuration reduceConf = new Configuration(false);
-//		ChainReducer.setReducer(job, XReduce.class, LongWritable.class, Text.class, Text.class, Text.class, true, reduceConf);
-//			 
-//		ChainReducer.addMapper(job, CMap.class, Text.class, Text.class, LongWritable.class, Text.class, false, null);
-//
-//		ChainReducer.addMapper(job, DMap.class, LongWritable.class, Text.class, LongWritable.class, LongWritable.class, true, null);
-//
-//		job.waitForCompletion(true);		
-		
-		/** alternativa Ã¨ chain di job **/
-//		Job job2 = Job.getInstance(new Configuration(), "esercizio1.1 chain");
-//		
-//		job.setSortComparatorClass(MySchifo.class); //ordinamento decrescente nella fase di shuffle&sort
-//		
-//		job2.setMapperClass(Mapper.class); //questo mapper dovrÃ  solo invertire k,v in v,k
-//		job2.setReducerClass(Reducer.class); //non deve fare niente a parte riportare in forma k,v context.write(words, keySum);
-//		
-//		/* output del tipo (testo, intero) */
-//		job.setOutputKeyClass(Text.class); // Set the key class for the job output data.
-//		job.setOutputValueClass(IntWritable.class); // Set the value class for the job output data.
-//
-//		job.waitForCompletion(true);
+		/* da qui in poi Ã¨ un tentativo */
 		//
 		// Job job2 = Job.getInstance(new Configuration(),
 		// "esercizio1.1 chain");
@@ -114,4 +83,3 @@ public class Driver {
 		//
 	}
 }
-		
