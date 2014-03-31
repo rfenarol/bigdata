@@ -16,5 +16,7 @@ public class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 		}
 		context.write(key, new IntWritable(sum));
 	}
+	
+	/* per evitare i duplicati vedere se si può usare un oggetto mappa, in comune a tutti i reducer */
 
 }

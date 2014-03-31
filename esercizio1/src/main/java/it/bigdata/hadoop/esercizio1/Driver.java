@@ -16,6 +16,8 @@ public class Driver {
 		job.setJarByClass(Driver.class);
 
 		job.setMapperClass(MyMapper.class); // Set the Mapper for the job.
+		
+//		job.setSortComparatorClass(cls);
 		job.setReducerClass(MyReducer.class); // Set the Reducer for the job.
 
 		FileInputFormat.addInputPath(job, new Path(args[0])); // file su cui
