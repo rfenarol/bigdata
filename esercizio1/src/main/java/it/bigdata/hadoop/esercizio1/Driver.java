@@ -40,6 +40,8 @@ public class Driver {
 		job2.setMapperClass(MySecondMapper.class);
 		job2.setReducerClass(MySecondReducer.class);
 		
+		job2.setSortComparatorClass(DescendingComparator.class);
+		
 		job2.setOutputKeyClass(IntWritable.class);
 		job2.setOutputValueClass(Text.class);
 		FileInputFormat.addInputPath(job2, new Path(args[1])); 	// output del primo job come input per il secondo
@@ -56,7 +58,6 @@ public class Driver {
 		//TODO
 		/* problemi da risolvere:
 		 * 1) verificare che il sorting non sia lessicografico ma giusto
-		 * 2) ora è in ordine crescente, serve farlo in ordine decrescente
 		 * 3) cambiando il modo di eseguire i job, il processo su terminale rimane appeso e non termina
 		 * come al solito, e non mostra neanche le percentuali di map e reduce.
 		 */
