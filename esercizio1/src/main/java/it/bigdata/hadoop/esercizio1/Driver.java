@@ -40,5 +40,4 @@ public class Driver {
 		job.waitForCompletion(true);
 		job2.waitForCompletion(true);
 	}
-	
 }
