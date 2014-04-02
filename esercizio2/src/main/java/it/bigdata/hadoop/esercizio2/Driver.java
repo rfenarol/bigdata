@@ -16,11 +16,11 @@ public class Driver {
 		job.setMapperClass(Interest2UsrMapper.class);
 		job.setReducerClass(UsersCoupleReducer.class);
 		
-		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
-		
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(Text.class);
 		
 		job.waitForCompletion(true);
 

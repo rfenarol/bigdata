@@ -14,8 +14,9 @@ public class UsersCoupleReducer extends Reducer<Text, Text, Text, Text> {
 		Iterator<Text> extIt = values.iterator();
 		while(extIt.hasNext()){
 			int j=0;
-			Text first = extIt.next();
-			first.set(first.toString()+",");
+			Text first = new Text();
+			String s = extIt.next().toString()+",";
+			first.set(s);
 			Iterator<Text> intIt = values.iterator();
 			while(j<i+1 && intIt.hasNext()){
 				intIt.next();
@@ -27,5 +28,13 @@ public class UsersCoupleReducer extends Reducer<Text, Text, Text, Text> {
 			}
 			i+=1;
 		}
+//		String s = "";
+//		Text finale = new Text();
+//		for (Text t : values){
+//			s+=t.toString();
+//			s += " ";
+//		}
+//		finale.set(s);
+//		context.write(key, finale);
 	}
 }
