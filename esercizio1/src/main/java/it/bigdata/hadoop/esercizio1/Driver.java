@@ -13,10 +13,10 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class Driver {
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();		
-		ControlledJob cjob = new ControlledJob(conf);
-		cjob.setJobName("esercizio1.1-jar01");
+//		ControlledJob cjob = new ControlledJob(conf);
+//		cjob.setJobName("esercizio1.1-first");
 	
-		Job job = cjob.getJob();
+		Job job = Job.getInstance(conf, "esercizio1.1-first");
 		job.setJarByClass(Driver.class);
 		job.setMapperClass(FirstMapper.class);
 		job.setCombinerClass(Combiner.class);
@@ -31,11 +31,11 @@ public class Driver {
 		
 		/* definisco il secondo job, per l'ordinamento */
 		Configuration conf2 = new Configuration();		
-		ControlledJob cjob2 = new ControlledJob(conf2);
-		cjob2.setJobName("esercizio1.1-jar02");
+//		ControlledJob cjob2 = new ControlledJob(conf2);
+//		cjob2.setJobName("esercizio1.1-jar02");
 		
-		cjob2.addDependingJob(cjob);	//inizia il job2 solo dopo che il job e' finito
-		Job job2 = cjob2.getJob();
+//		cjob2.addDependingJob(cjob);	//inizia il job2 solo dopo che il job e' finito
+		Job job2 = Job.getInstance(conf2, "esercizio1.1-second");
 		job2.setJarByClass(Driver.class);
 		job2.setMapperClass(SecondMapper.class);
 		job2.setReducerClass(SecondReducer.class);
