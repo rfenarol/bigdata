@@ -8,7 +8,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class FirstMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 	private static final IntWritable one = new IntWritable(1);
 	private Text word = new Text();

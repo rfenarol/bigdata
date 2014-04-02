@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class MySecondMapper extends Mapper<LongWritable, Text, IntWritable, Text> {
+public class SecondMapper extends Mapper<LongWritable, Text, IntWritable, Text> {
 	private IntWritable occorrenza;
 	private Text interesse = new Text();
 	
