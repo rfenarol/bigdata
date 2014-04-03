@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class Interest2UsrMapper extends Mapper<LongWritable, Text, Text, Text> {
+public class FirstMapper extends Mapper<LongWritable, Text, Text, Text> {
 
 	private Text interest = new Text();
 	private Text user = new Text();

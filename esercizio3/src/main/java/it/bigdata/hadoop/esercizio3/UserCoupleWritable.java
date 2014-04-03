@@ -3,42 +3,42 @@ package it.bigdata.hadoop.esercizio3;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
 
 public class UserCoupleWritable implements WritableComparable<UserCoupleWritable>{
-	private Text u1;
-	private Text u2;
+	private String u1;
+	private String u2;
 	
-	public UserCoupleWritable(Text user1, Text user2){
+	public UserCoupleWritable(){
+	}
+	
+	public UserCoupleWritable(String user1, String user2){
 		setU1(user1);
 		setU2(user2);
 	}
 	
-	public Text getU1() {
+	public String getU1() {
 		return u1;
 	}
-	public void setU1(Text u1) {
+	public void setU1(String u1) {
 		this.u1 = u1;
 	}
-	public Text getU2() {
+	public String getU2() {
 		return u2;
 	}
-	public void setU2(Text u2) {
+	public void setU2(String u2) {
 		this.u2 = u2;
 	}
 	
 	/* da rivedere
-	 * si puo' definire meglio, magari facendo un equals tra le stringhe, senza usare il Text 
+	 * si puo' definire meglio, magari facendo un equals tra le stringhe, senza usare il String 
 	 */
 	public boolean equals (Object o){
 		if (o instanceof UserCoupleWritable){
 			UserCoupleWritable c = (UserCoupleWritable) o;
-			return (u1.compareTo(c.getU1())==0 && u2.compareTo(c.getU2())==0) || 
-					(u1.compareTo(c.getU2())==0 && u2.compareTo(c.getU1()) == 0);
+			return (u1.equals(c.getU1()) && u2.equals(c.getU2())) || 
+					(u1.equals(c.getU2()) && u2.equals(c.getU1()));
 		}
-		
 		return false;	
 	}
 
@@ -47,26 +47,41 @@ public class UserCoupleWritable implements WritableComparable<UserCoupleWritable
 	}
 
 	public void write(DataOutput out) throws IOException {
-		out.writeUTF(u1.toString());
-		out.writeUTF(u2.toString());
+		out.writeUTF(u1);
+		out.writeUTF(u2);
 	}
 
 	public void readFields(DataInput in) throws IOException {
-		u1 = new Text(in.readUTF());
-		u2 = new Text(in.readUTF());		
+		u1 = in.readUTF();
+		u2 = in.readUTF();		
 	}
 
 	/* bisogna definire un metodo compareTo per fare un ordinamento sulle coppie */
 	public int compareTo(UserCoupleWritable c) {
-		int cmp = u1.compareTo(c.getU1());
-		if (cmp != 0) {
-			return cmp;
+		int test1 = 0;
+		int test2 = 0;
+		
+		test1 = u1.compareTo(c.getU1());
+		if (test1 == 0)
+			test1 = u2.compareTo(c.getU2());
+		
+		test2 = u1.compareTo(c.getU2());
+		if (test2 == 0) 
+			test2 = u2.compareTo(c.getU1());
+		
+		if (test1==0 || test2 == 0)
+			return 0;
+		else {
+			if (test1 !=0)
+				return test1;
+			if (test2 !=0)
+				test1 = test2;
 		}
-		return u2.compareTo(c.getU2());
+		return test1;
 	}
 	
 	public String toString (){
-		String s = this.u1.toString() + "," + this.u2.toString();
+		String s = this.u1 + "," + this.u2;
 		return s;
 	}
 }

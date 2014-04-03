@@ -11,10 +11,10 @@ public class Driver {
 
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
-		Job job = Job.getInstance(conf, "esercizio1.2");
+		Job job = Job.getInstance(conf, "esercizio1.3-first");
 		job.setJarByClass(Driver.class);
-		job.setMapperClass(Interest2UsrMapper.class);
-		job.setReducerClass(Interest2UserCoupleReducer.class);
+		job.setMapperClass(FirstMapper.class);
+		job.setReducerClass(FirstReducer.class);
 		
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -27,10 +27,10 @@ public class Driver {
 		 * (coppia, interesse) restituisca un elenco di (coppia, [interessi])
 		 */
 		Configuration conf2 = new Configuration();		
-		Job job2 = Job.getInstance(conf2, "esercizio1.1-second");
+		Job job2 = Job.getInstance(conf2, "esercizio1.3-second");
 		job2.setJarByClass(Driver.class);
-		job2.setMapperClass(Couple2InterestMapper.class);
-		job2.setReducerClass(UserCouple2InterestsReducer.class);
+		job2.setMapperClass(SecondMapper.class);
+		job2.setReducerClass(SecondReducer.class);
 		
 		job2.setOutputKeyClass(UserCoupleWritable.class);
 		job2.setOutputValueClass(Text.class);
