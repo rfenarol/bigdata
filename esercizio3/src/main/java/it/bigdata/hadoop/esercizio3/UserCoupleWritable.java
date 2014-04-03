@@ -30,7 +30,7 @@ public class UserCoupleWritable implements WritableComparable<UserCoupleWritable
 	}
 	
 	/* da rivedere
-	 * si può definire meglio, magari facendo un equals tra le stringhe, senza usare il Text 
+	 * si puo' definire meglio, magari facendo un equals tra le stringhe, senza usare il Text 
 	 */
 	public boolean equals (Object o){
 		if (o instanceof UserCoupleWritable){
@@ -63,5 +63,10 @@ public class UserCoupleWritable implements WritableComparable<UserCoupleWritable
 			return cmp;
 		}
 		return u2.compareTo(c.getU2());
-	}	
+	}
+	
+	public String toString (){
+		String s = this.u1.toString() + "," + this.u2.toString();
+		return s;
+	}
 }

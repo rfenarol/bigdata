@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class NaiveMapper extends Mapper<LongWritable, Text, UserCoupleWritable, Text> {
+public class Couple2InterestMapper extends Mapper<LongWritable, Text, UserCoupleWritable, Text> {
 	private Text first = new Text();
 	private Text second = new Text();
 	private Text interest = new Text();

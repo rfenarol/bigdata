@@ -26,10 +26,19 @@ public class Driver {
 		/* inserire qui sotto il secondo job, che dato un elenco di coppie
 		 * (coppia, interesse) restituisca un elenco di (coppia, [interessi])
 		 */
+		Configuration conf2 = new Configuration();		
+		Job job2 = Job.getInstance(conf2, "esercizio1.1-second");
+		job2.setJarByClass(Driver.class);
+		job2.setMapperClass(Couple2InterestMapper.class);
+		job2.setReducerClass(UserCouple2InterestsReducer.class);
 		
-		
+		job2.setOutputKeyClass(UserCoupleWritable.class);
+		job2.setOutputValueClass(Text.class);
+		FileInputFormat.addInputPath(job2, new Path(args[1])); 	// output del primo job come input per il secondo
+		FileOutputFormat.setOutputPath(job2, new Path(args[2]));	//directory di output dei risultati ordinati in modo decrescente
+	
 		job.waitForCompletion(true);
-
+		job2.waitForCompletion(true);
 	}
 
 }
