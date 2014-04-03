@@ -6,18 +6,15 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class SecondReducer extends Reducer<IntWritable, Text, IntWritable, Text> {
+public class SecondReducer extends Reducer<IntWritable, Text, Text, IntWritable> {
 	private Text interessi = new Text();
 	
 	public void reduce(IntWritable key, Iterable<Text> values, Context context)throws IOException, InterruptedException {
 		
-		String s = "";
 		for (Text interesse : values) {
-			s += (interesse.toString() +" ");
+			interessi.set(interesse.toString());
+			context.write(interessi, key);
 		}
-		interessi.set(s);
-		
-		context.write(key, interessi);
 	}
 
 }

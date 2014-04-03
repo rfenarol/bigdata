@@ -24,7 +24,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>it.bigdata.hadoop.esercizio1.Driver</mainClass>
+							<mainClass>it.bigdata.hadoop.esercizio3.Driver</mainClass>
 							<classpathPrefix>dependency-jars/</classpathPrefix>
 						</manifest>
 					</archive>
