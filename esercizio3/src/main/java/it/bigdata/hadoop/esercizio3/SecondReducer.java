@@ -12,7 +12,7 @@ public class SecondReducer extends Reducer<UserCoupleWritable, Text, UserCoupleW
 		for (Text i : values){
 				s+=i.toString() + ",";				
 		}
-		s.replaceAll(",\n", "");
+		s = s.substring(0, s.length()-1);
 		Text interests = new Text(s);
 		
 		context.write(key, interests);
