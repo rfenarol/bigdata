@@ -19,9 +19,12 @@ public class UsersCoupleReducer extends Reducer<Text, Text, Text, Text> {
 			for(j=i+1; j< names.size(); j++){
 				Text first = new Text();
 				Text second = new Text();
-				String f = names.get(i) + ",";
-				first.set(f);
+				StringBuffer sb = new StringBuffer();
+				sb.append(names.get(i));
+				sb.append(",");
+				first.set(sb.toString());
 				second.set(names.get(j));
+				
 				context.write(first, second);
 			}
 		}
