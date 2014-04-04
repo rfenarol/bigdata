@@ -28,36 +28,5 @@ public class UsersCoupleReducer extends Reducer<Text, Text, Text, Text> {
 				context.write(first, second);
 			}
 		}
-		
-
-//		Text second = new Text();
-//		Text first = new Text();
-//		int i=0;
-//		Iterator<Text> extIt = values.iterator();
-//		Iterator<Text> intIt;
-//		while(extIt.hasNext()){
-//			int j=0;
-////			first = new Text();
-//			String s = extIt.next().toString()+",";
-//			first.set(s);
-//			intIt = values.iterator();
-//			while(j<i+1 && intIt.hasNext()){
-//				intIt.next();
-//				j+=1;
-//			}
-//			while(intIt.hasNext()){
-//				second = intIt.next();
-//				context.write(first, second);
-//			}
-//			i+=1;
-//		}
-//		String s = "";
-//		Text finale = new Text();
-//		for (Text t : values){
-//			s+=t.toString();
-//			s += " ";
-//		}
-//		finale.set(s);
-//		context.write(key, finale);
 	}
 }
