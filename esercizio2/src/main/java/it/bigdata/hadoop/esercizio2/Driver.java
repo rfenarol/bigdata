@@ -15,6 +15,7 @@ public class Driver {
 		job.setJarByClass(Driver.class);
 		job.setMapperClass(Interest2UsrMapper.class);
 		job.setReducerClass(UsersCoupleReducer.class);
+		job.setCombinerClass(Combiner.class);
 		
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
