@@ -53,7 +53,6 @@ public class UserCoupleWritable implements WritableComparable<UserCoupleWritable
 		u2 = in.readUTF();		
 	}
 
-	/* bisogna definire un metodo compareTo per fare un ordinamento sulle coppie */
 	public int compareTo(UserCoupleWritable c) {
 		int test1 = 0;
 		int test2 = 0;
