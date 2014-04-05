@@ -30,9 +30,6 @@ public class UserCoupleWritable implements WritableComparable<UserCoupleWritable
 		this.u2 = u2;
 	}
 	
-	/* da rivedere
-	 * si puo' definire meglio, magari facendo un equals tra le stringhe, senza usare il String 
-	 */
 	public boolean equals (Object o){
 		if (o instanceof UserCoupleWritable){
 			UserCoupleWritable c = (UserCoupleWritable) o;
@@ -56,7 +53,6 @@ public class UserCoupleWritable implements WritableComparable<UserCoupleWritable
 		u2 = in.readUTF();		
 	}
 
-	/* bisogna definire un metodo compareTo per fare un ordinamento sulle coppie */
 	public int compareTo(UserCoupleWritable c) {
 		int test1 = 0;
 		int test2 = 0;

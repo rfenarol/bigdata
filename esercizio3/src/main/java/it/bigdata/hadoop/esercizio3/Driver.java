@@ -22,10 +22,6 @@ public class Driver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
 		
-		
-		/* inserire qui sotto il secondo job, che dato un elenco di coppie
-		 * (coppia, interesse) restituisca un elenco di (coppia, [interessi])
-		 */
 		Configuration conf2 = new Configuration();		
 		Job job2 = Job.getInstance(conf2, "esercizio1.3-second");
 		job2.setJarByClass(Driver.class);
